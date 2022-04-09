@@ -5,7 +5,8 @@ interface CEtherInterface {
     function totalSupply() external view returns (uint);
     function mint() external payable;
     function balanceOf(address owner) external view returns (uint256 balance);
-    function transfer(address dst, uint256 amount) external nonReentrant returns (bool);
+    //function transfer(address dst, uint256 amount) external nonReentrant returns (bool);
+    function transfer(address dst, uint256 amount) external returns (bool);
 }
 
 contract CompoundWallet {
@@ -27,10 +28,10 @@ contract CompoundWallet {
         cEther.transfer(msg.sender, balance);
     }
 
-    modifier nonReentrant() {
-        require(_notEntered, "re-entered");
-        _notEntered = false;
-        _;
-        _notEntered = true; // get a gas-refund post-Istanbul
-    }
+//    modifier nonReentrant() {
+//        require(_notEntered, "re-entered");
+//        _notEntered = false;
+//        _;
+//        _notEntered = true; // get a gas-refund post-Istanbul
+//    }
 }
